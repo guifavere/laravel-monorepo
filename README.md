@@ -2,7 +2,7 @@
 
 ## Laravel
 
-move to the directory: **backend**
+move to the directory: **api**
 
 install dependencies
 ```
@@ -16,9 +16,9 @@ start project
 
 ---
 
-## React
+## Next.js
 
-move to the directory: **frontend**
+move to the directory: **web**
 
 install dependencies
 ```
