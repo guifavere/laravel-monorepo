@@ -19,7 +19,13 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
-        "@/*": ["./*"]
+        "@/*": ["./*"],
+        "@app/*": ["./app/*"],
+        "@components/*": ["./components/*"],
+        "@features/*": ["./features/*"],
+        "@hooks/*": ["./hooks/*"],
+        "@middlewares/*": ["./middlewares/*"],
+        "@utils/*": ["./utils/*"],
     },
     "moduleResolution": "node"
   },
