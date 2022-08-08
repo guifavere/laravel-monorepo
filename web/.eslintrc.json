@@ -1,0 +1,49 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true,
+    "commonjs": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020
+  },
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@next/eslint-plugin-next",
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    "import/prefer-default-export": "off",
+    "prettier/prettier": "error",
+    "react/jsx-props-no-spreading": "off",
+    "max-len": ["error", { "code": 80, "tabWidth": 4, "ignoreUrls": true }],
+    "camelcase": "off",
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "no-param-reassign": ["error", { "ignorePropertyModificationsFor": ["draft"] }],
+    "react/prop-types": ["error", { "ignore": ["children"] }],
+    "@typescript-eslint/no-shadow": ["error"],
+    "react/react-in-jsx-scope": "off",
+    "consistent-return": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/function-component-definition": "off"
+  }
+}

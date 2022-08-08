@@ -4,10 +4,6 @@ interface AppLayoutProps {
   children: ReactNode;
 }
 
-export const AppLayout = ({ children }: AppLayoutProps) => {
-  return (
-    <div>
-      {children}
-    </div>
-  );
-}
+export const AppLayout = ({ children }: AppLayoutProps) => (
+  <div>{children}</div>
+);
