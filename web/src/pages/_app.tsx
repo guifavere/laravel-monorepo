@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app';
 import { MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
 
 const App = ({ Component, pageProps }: AppProps) => (
   <MantineProvider
@@ -7,7 +8,9 @@ const App = ({ Component, pageProps }: AppProps) => (
     withNormalizeCSS
     theme={{ colorScheme: 'light' }}
   >
-    <Component {...pageProps} />
+    <NotificationsProvider>
+      <Component {...pageProps} />
+    </NotificationsProvider>
   </MantineProvider>
 );
 
