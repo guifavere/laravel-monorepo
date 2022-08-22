@@ -1,18 +1,44 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import type { BaseQueryFn } from '@reduxjs/toolkit/query';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import type { AxiosRequestConfig, AxiosError } from 'axios';
+
+import { api, csrf } from '@utils/api';
+
+export const axiosBaseQuery = (): BaseQueryFn<
+  {
+    url: string;
+    method: AxiosRequestConfig['method'];
+    data?: AxiosRequestConfig['data'];
+    params?: AxiosRequestConfig['params'];
+  },
+  unknown,
+  unknown
+> => async ({ url, method, data, params }) => {
+  const baseUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api`;
+
+  try {
+    await csrf();
+
+    const result = await api({ url: baseUrl + url, method, data, params });
+
+    return { data: result.data };
+  } catch (axiosError) {
+    const err = axiosError as AxiosError;
+
+    return {
+      error: {
+        status: err.response?.status,
+        data: err.response?.data || err.message,
+      },
+    };
+  }
+};
 
 export const apiSlice = createApi({
-  baseQuery: fetchBaseQuery({
-    baseUrl: '/api',
-    prepareHeaders: headers => {
-      headers.set('accept', 'application/json');
-
-      return headers;
-    },
-  }),
+  baseQuery: axiosBaseQuery(),
   endpoints: () => ({}),
   reducerPath: 'api',
   refetchOnFocus: false,
-  tagTypes: ['User'],
 });
 
 interface ErrorWithResponse {
